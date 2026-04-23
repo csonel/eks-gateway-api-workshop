@@ -1,0 +1,24 @@
+# Gateway API CRDs - Standard Channel v1.5.1
+#
+# This file is a reference marker. The actual CRDs are installed from
+# the upstream release URL using server-side apply (required because
+# the CRDs are too large for client-side apply).
+#
+# Install command (see docs/02-controllers.md Step 1):
+#
+#   kubectl apply --server-side -f \
+#     https://github.com/kubernetes-sigs/gateway-api/releases/download/v1.5.1/standard-install.yaml
+#
+# CRDs installed:
+#   - gatewayclasses.gateway.networking.k8s.io
+#   - gateways.gateway.networking.k8s.io
+#   - httproutes.gateway.networking.k8s.io
+#   - referencegrants.gateway.networking.k8s.io
+#   - grpcroutes.gateway.networking.k8s.io
+#
+# Version: v1.5.1 (standard channel)
+# Source: https://github.com/kubernetes-sigs/gateway-api/releases/tag/v1.5.1
+#
+# NOTE: Do NOT use the experimental-install.yaml. Experimental CRDs include
+# TCPRoute/UDPRoute/TLSRoute which are not needed for this workshop and add
+# significant size overhead.

@@ -1,0 +1,10 @@
+apiVersion: gateway.k8s.aws/v1beta1
+kind: TargetGroupConfiguration
+metadata:
+  name: podinfo-backend-tgconfig
+  namespace: workshop-gateway
+spec:
+  targetReference:
+    name: podinfo-backend
+  defaultConfiguration:
+    targetType: ip

@@ -1,0 +1,7 @@
+apiVersion: gateway.k8s.aws/v1beta1
+kind: LoadBalancerConfiguration
+metadata:
+  name: workshop-gateway-lbconfig
+  namespace: workshop-gateway
+spec:
+  scheme: internet-facing

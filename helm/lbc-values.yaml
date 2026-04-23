@@ -1,0 +1,45 @@
+# AWS Load Balancer Controller Helm Values
+# Chart: eks/aws-load-balancer-controller version 3.1.0 (app v3.1.0)
+#
+# IMPORTANT: In v3.x, the Helm chart version matches the app version.
+# Chart 3.1.0 = app v3.1.0. (v2.x used 1.x.y chart versions: 1.14.0 = app v2.14.0)
+#
+# IMPORTANT: Gateway API feature flags MUST be set at install time via
+# controllerConfig.featureGates. They cannot be enabled without a full Helm upgrade.
+# In v3.x these flags go under controllerConfig.featureGates (not top-level featureGates).
+#
+# IMPORTANT: region and vpcId are set explicitly because Bottlerocket
+# nodes use IMDSv2 with hop limit 1, which blocks the controller's
+# IMDS-based VPC/region auto-detection when use_custom_launch_template=false.
+
+clusterName: awscdro-eks
+region: eu-central-1
+
+# VPC ID - replace with actual value from: terraform output -raw vpc_id
+vpcId: "REPLACE_WITH_VPC_ID"
+
+serviceAccount:
+  create: true
+  name: aws-load-balancer-controller
+  annotations:
+    eks.amazonaws.com/role-arn: "REPLACE_WITH_LBC_ROLE_ARN"
+
+# Enable Gateway API support for both ALB and NLB
+# Without these flags, Gateway/HTTPRoute resources are silently ignored
+# In v3.x: use controllerConfig.featureGates (map), NOT top-level featureGates (string)
+controllerConfig:
+  featureGates:
+    ALBGatewayAPI: "true"
+    NLBGatewayAPI: "true"
+
+# Resource limits appropriate for workshop t3.small/medium nodes
+resources:
+  requests:
+    cpu: 100m
+    memory: 128Mi
+  limits:
+    cpu: 200m
+    memory: 256Mi
+
+# Single replica sufficient for workshop
+replicaCount: 1

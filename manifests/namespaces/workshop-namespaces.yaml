@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: workshop-app
+  labels:
+    workshop: "aws-community-day-2026"
+    purpose: "sample-application"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: workshop-alb
+  labels:
+    workshop: "aws-community-day-2026"
+    purpose: "alb-lab"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: workshop-nlb
+  labels:
+    workshop: "aws-community-day-2026"
+    purpose: "nlb-lab"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: workshop-gateway
+  labels:
+    workshop: "aws-community-day-2026"
+    purpose: "gateway-api-lab"
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: workshop-lattice
+  labels:
+    workshop: "aws-community-day-2026"
+    purpose: "vpc-lattice-lab"

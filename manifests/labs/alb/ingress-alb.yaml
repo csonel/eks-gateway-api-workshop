@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: podinfo-alb
+  namespace: workshop-alb
+  annotations:
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
+spec:
+  ingressClassName: alb
+  rules:
+    - http:
+        paths:
+          - path: /api/info
+            pathType: Prefix
+            backend:
+              service:
+                name: podinfo-backend
+                port:
+                  number: 9898
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: podinfo-frontend
+                port:
+                  number: 9898

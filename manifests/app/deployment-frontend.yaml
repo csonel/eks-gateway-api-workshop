@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: podinfo-frontend
+  labels:
+    app: podinfo-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: podinfo-frontend
+  template:
+    metadata:
+      labels:
+        app: podinfo-frontend
+    spec:
+      containers:
+        - name: podinfo
+          image: ghcr.io/stefanprodan/podinfo:6.11.2
+          ports:
+            - containerPort: 9898
+              name: http
+              protocol: TCP
+          env:
+            - name: PODINFO_UI_MESSAGE
+              value: "Hello from frontend"
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: 9898
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: 9898
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 100m
+              memory: 128Mi
