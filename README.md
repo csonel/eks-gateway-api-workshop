@@ -109,6 +109,10 @@ Work through the docs in order. Each step builds on the previous one.
 └── *.tf                Terraform configuration for the EKS cluster and supporting infra
 ```
 
+## Attribution
+
+If you use or adapt this workshop for a meetup, internal training, blog post, or conference session, please reference this repository and the original authors.
+
 ## Authors
 
 <img src="https://github.com/csonel.png" width="64" align="left" style="border-radius:50%;margin-right:12px">
@@ -125,10 +129,7 @@ Senior Platform Engineer @ AirDNA · CNCF Ambassador
 
 <br clear="left">
 
-## TODO
+## License
 
-- [x] Add architecture diagrams showing traffic flow for each lab (Internet → ALB/NLB/Gateway → EKS pods)
-- [x] Add a "What you'll build" visual summary for each step
-- [x] Improve the authors section
-- [x] Test the setup script on Windows
-- [ ] EKS: add instructor access entries before the workshop
+This project is released under the [MIT License](LICENSE). It is intended for community learning, reuse, and adaptation.
+
